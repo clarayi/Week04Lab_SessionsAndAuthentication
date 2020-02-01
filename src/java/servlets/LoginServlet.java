@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utility.AccountService;
+import utility.User;
 
 /**
  *
@@ -52,7 +54,19 @@ public class LoginServlet extends HttpServlet
         String userName = request.getParameter("userNameInput");
         String password = request.getParameter("passwordInput");
         
-        if(userName.equals(request)
+        AccountService validateInput = new AccountService();
+        User user = validateInput.login(userName, password);
+        
+        if(user == null)
+        {
+            request.setAttribute("resultMessage", "Invalid login");
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        }
+        else
+        {
+            session.setAttribute("loggedInUserName", user.getUserName());
+            response.sendRedirect(request.getContextPath() + "/home");
+        }
     }
 
     /**
