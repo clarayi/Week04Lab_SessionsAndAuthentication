@@ -14,10 +14,10 @@
     <body>
         <h1>Login</h1>
         <form method="post">
-            Username: <input type="text" name="userNameInput" required />
-            Password: <input type="password" name="passwordInput" required />
+            Username: <input type="text" name="userNameInput" required /><br>
+            Password: <input type="password" name="passwordInput" required /><br>
             <input type="submit" value="Log in" />
-            <p>${resultMessage}}</p>
+            <p>${resultMessage}</p>
         </form>
     </body>
 </html>

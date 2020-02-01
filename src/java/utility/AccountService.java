@@ -11,13 +11,24 @@ package utility;
  */
 public class AccountService
 {
-    public AccountService(String userName, String password)
+    public AccountService()
     {
         ;
     }
     
     public User login(String userName, String password)
     {
+        User user = null;
         
+        if((userName.equals("adam") || userName.equals("betty")) && password.equals("password"))
+        {
+            user = new User(userName, null);
+        }
+        else
+        {
+            user = null;
+        }
+        
+        return user;
     }
 }
