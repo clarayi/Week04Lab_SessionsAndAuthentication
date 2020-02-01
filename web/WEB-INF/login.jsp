@@ -14,8 +14,8 @@
     <body>
         <h1>Login</h1>
         <form method="post">
-            Username: <input type="text" required />
-            Password: <input type="password" required />
+            Username: <input type="text" name="userNameInput" required />
+            Password: <input type="password" name="passwordInput" required />
             <input type="submit" value="Log in" />
             <p>${resultMessage}}</p>
         </form>
