@@ -28,13 +28,15 @@ public class LoginServlet extends HttpServlet
         
         String logoutClicked = request.getParameter("logout");
         
-        if(logoutClicked == null)
+        if(logoutClicked == null && session.getAttribute("loggedInUserName") != null)
         {
-            session.removeAttribute("loggedInUserName");
-            
+            response.sendRedirect(request.getContextPath() + "/home");
+        }
+        else if(logoutClicked == null && session.getAttribute("loggedInUserName") == null)
+        {
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
-        else
+        else if(logoutClicked != null)
         {
             session.removeAttribute("loggedInUserName");
             
